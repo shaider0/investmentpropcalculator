@@ -5,7 +5,7 @@ class Properties extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            allProperties: {}
+            allProperties: []
         }
     }
 
@@ -18,21 +18,33 @@ class Properties extends React.Component {
         const getProperties = async () => {
             try {
                 const result = await axios.get(`${api}/property`)
-                console.log('result from api is', result)
+                console.log('result is', result)
                 await this.setState({
-                    allProperties: result
+                    allProperties: result.data
                 })
+                console.log("state shows", this.state.allProperties)
 
             } catch (e) {
                 console.log('Error', e)
             }
         }
+        getProperties()
     }
 
     render() {
+        const { allProperties } = this.state
+        console.log('all', this.state)
         return (
-            <h1>All Properties</h1>
-        )
+            <>
+                <ul>
+                    {allProperties.map(property => (
+                        <li key={property._id}>
+                            {property.purchasePrice}
+                        </li>
+                    ))}
+                </ul>
+            </>
+        );
     }
 }
 
