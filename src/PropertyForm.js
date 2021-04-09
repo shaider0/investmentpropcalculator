@@ -1,4 +1,5 @@
 import React from "react"
+const axios = require('axios').default;
 
 class PropertyForm extends React.Component {
     constructor(props) {
@@ -15,8 +16,21 @@ class PropertyForm extends React.Component {
     }
 
     handleSubmit(event) {
+        let api = "http://localhost:8081"
+        if (window.location.hostname !== 'localhost') {
+            api = "https://investmentpropcalcapi.herokuapp.com"
+        }
         console.log('A name was submitted: ' + this.state.purchasePrice);
         event.preventDefault();
+        axios.post(`${api}/property`, {
+            purchasePrice: this.state.purchasePrice
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     render() {
