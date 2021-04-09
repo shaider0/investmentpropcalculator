@@ -1,5 +1,7 @@
+import PropertyForm from "./PropertyForm"
 import React from "react"
 const axios = require('axios').default;
+
 
 class Properties extends React.Component {
     constructor(props) {
@@ -7,15 +9,16 @@ class Properties extends React.Component {
         this.state = {
             allProperties: []
         }
+        this.getProperties = this.getProperties.bind(this);
     }
 
-    componentDidMount() {
+    getProperties() {
         let api = "http://localhost:8081"
         if (window.location.hostname !== 'localhost') {
             api = "https://investmentpropcalcapi.herokuapp.com"
         }
 
-        const getProperties = async () => {
+        const getPropertiesFromApi = async () => {
             try {
                 const result = await axios.get(`${api}/property`)
                 console.log('result is', result)
@@ -28,14 +31,20 @@ class Properties extends React.Component {
                 console.log('Error', e)
             }
         }
-        getProperties()
+        getPropertiesFromApi()
+    }
+
+    componentDidMount() {
+        this.getProperties()
     }
 
     render() {
         const { allProperties } = this.state
+        console.log('this', this.getProperties)
         console.log('all', this.state)
         return (
             <>
+                <PropertyForm getProperties={this.getProperties} />
                 <ul>
                     {allProperties.map(property => (
                         <li key={property._id}>

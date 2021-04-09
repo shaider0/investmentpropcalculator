@@ -5,7 +5,7 @@ class PropertyForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            purchasePrice: 100000
+            purchasePrice: 0
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,6 +28,8 @@ class PropertyForm extends React.Component {
             .then(function (response) {
                 console.log(response);
             })
+            .then(this.props.getProperties)
+            .then(this.setState({ purchasePrice: 0 }))
             .catch(function (error) {
                 console.log(error);
             });
