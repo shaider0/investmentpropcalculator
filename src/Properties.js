@@ -41,60 +41,66 @@ class Properties extends React.Component {
         const { allProperties } = this.state
         return (
             <>
+                <h2 className="section-title">Submit a New Property:</h2>
                 <PropertyForm getProperties={this.getProperties} />
+                <h2 className="section-title">Saved Properties:</h2>
                 <ul>
                     {allProperties.map(property => (
                         <li key={property._id} className="property container">
-                            <div className="row user-content">
-                                <div className="col-sm-4">
-                                    <img src={defaultImage} height="150" width="150" />
+                            <div className="row check">
+                                <div className="col-lg-3">
+                                    <img src={defaultImage} height="200" width="200" />
                                 </div>
-                                <div className="col-sm-4">
-                                    <h2>Data Provided:</h2>
-                                    <h3>
-                                        {property.propertyAddress}
-                                    </h3>
-                                    <div>
-                                        <b>Purchase Price: </b>${property.purchasePrice}
+
+                                <div className="data-provided col-lg-9 container">
+                                    <div className="row post-details">
+                                        <div className="col-lg-6">
+                                            <h3>
+                                                {property.propertyAddress}
+                                            </h3>
+                                            <div>
+                                                <b>Purchase Price: </b>${property.purchasePrice}
+                                            </div>
+                                            <div>
+                                                <b>Down Payment: </b>${property.downPayment}
+                                            </div>
+                                            <div>
+                                                <b>Interest Rate: </b> {property.interestRate}%
+                                            </div>
+                                            <div>
+                                                <b>Loan Term: </b>${property.loanTerm} Years
+                                            </div>
+                                            <div>
+                                                <b>Monthly Rental Income: </b>${property.rentalIncome}
+                                            </div>
+                                            <div>
+                                                <b>Monthly Expenses: </b>${property.expenses}
+                                            </div>
+                                        </div>
+
+                                        <div className="col-lg-6">
+                                            <hr></hr>
+                                            <h2>Analysis:</h2>
+                                            <div>
+                                                <b>Loan Amount </b>${property.purchasePrice - property.downPayment}
+                                            </div>
+                                            <div>
+                                                <b>Monthly Mortgage Payment: </b>TO BE CALCULATED
+                                            </div>
+                                            <div>
+                                                <b>Total Monthly Expenses: </b>${property.expenses}
+                                            </div>
+                                            <div>
+                                                <b>Total Monthly Cash Flow </b>${property.expenses}
+                                            </div>
+                                            <div>
+                                                <b>Cash on Cash Return </b>${property.expenses}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <b>Down Payment: </b>${property.downPayment}
-                                    </div>
-                                    <div>
-                                        <b>Interest Rate: </b> {property.interestRate}%
-                                    </div>
+
                                 </div>
-                                <div className="col-sm-4">
-                                    <div>
-                                        <b>Loan Term: </b>${property.loanTerm} Years
-                                    </div>
-                                    <div>
-                                        <b>Monthly Rental Income: </b>${property.rentalIncome}
-                                    </div>
-                                    <div>
-                                        <b>Monthly Expenses: </b>${property.expenses}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row calculated-content">
-                                <div className="col-sm-12">
-                                    <h2>Analysis:</h2>
-                                    <div>
-                                        <b>Loan Amount </b>${property.purchasePrice - property.downPayment}
-                                    </div>
-                                    <div>
-                                        <b>Monthly Mortgage Payment: </b>TO BE CALCULATED
-                                    </div>
-                                    <div>
-                                        <b>Total Monthly Expenses: </b>${property.expenses}
-                                    </div>
-                                    <div>
-                                        <b>Total Monthly Cash Flow </b>${property.expenses}
-                                    </div>
-                                    <div>
-                                        <b>Cash on Cash Return </b>${property.expenses}
-                                    </div>
-                                </div>
+
                             </div>
                         </li>
                     ))}

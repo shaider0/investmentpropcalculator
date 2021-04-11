@@ -1,4 +1,5 @@
 import React from "react"
+import "./PropertyForm.css"
 const axios = require('axios').default;
 
 class PropertyForm extends React.Component {
@@ -55,51 +56,60 @@ class PropertyForm extends React.Component {
 
     render() {
         return (
-            <form id="property-form" onSubmit={this.handleSubmit}>
-                <div>
-                    <label>
-                        Property Address
+            <form id="property-form" className="container" onSubmit={this.handleSubmit}>
+                <div className="row form-container">
+                    <div className="col-lg-6">
+                        <div>
+                            <label>
+                                Property Address
                         <input required type="text" id="property-address" name="propertyAddress" value={this.state.propertyAddress} onChange={this.handleChange} placeholder="123 Main st" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Purchase Price
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Purchase Price
                         <input required type="number" id="purchase-price" name="purchasePrice" value={this.state.purchasePrice} onChange={this.handleChange} placeholder="100000" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Down Payment
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Down Payment
                         <input required type="number" id="down-payment" name="downPayment" value={this.state.downPayment} onChange={this.handleChange} placeholder="20000" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Interest Rate
+                            </label>
+                        </div>
+                    </div>
+                    <div className="col-lg-6">
+                        <div>
+                            <label>
+                                Interest Rate
                         <input required type="number" id="interest-rate" name="interestRate" value={this.state.interestRate} onChange={this.handleChange} placeholder="4.5" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Loan Term (Years)
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Loan Term (Years)
                         <input required type="number" id="loan-term" name="loanTerm" value={this.state.loanTerm} onChange={this.handleChange} placeholder="30" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Rental Income (Monthly)
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Rental Income (Monthly)
                         <input required type="number" id="rental-income" name="rentalIncome" value={this.state.rentalIncome} onChange={this.handleChange} placeholder="1500" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Expenses (Monthly)
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Expenses (Monthly)
                         <input required type="number" id="expenses" name="expenses" value={this.state.expenses} onChange={this.handleChange} placeholder="500" />
-                    </label>
+                            </label>
+                        </div>
+                    </div>
                 </div>
+
+
+
                 <div>
-                    <input type="submit" value="Submit" />
+                    <input className="btn-primary" type="submit" value="Submit" />
                 </div>
             </form>
         )
