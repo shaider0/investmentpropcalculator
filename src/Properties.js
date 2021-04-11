@@ -2,7 +2,6 @@ import PropertyForm from "./PropertyForm"
 import React from "react"
 const axios = require('axios').default;
 
-
 class Properties extends React.Component {
     constructor(props) {
         super(props)
@@ -21,11 +20,9 @@ class Properties extends React.Component {
         const getPropertiesFromApi = async () => {
             try {
                 const result = await axios.get(`${api}/property`)
-                console.log('result is', result)
                 await this.setState({
                     allProperties: result.data
                 })
-                console.log("state shows", this.state.allProperties)
 
             } catch (e) {
                 console.log('Error', e)
@@ -40,15 +37,13 @@ class Properties extends React.Component {
 
     render() {
         const { allProperties } = this.state
-        console.log('this', this.getProperties)
-        console.log('all', this.state)
         return (
             <>
                 <PropertyForm getProperties={this.getProperties} />
                 <ul>
                     {allProperties.map(property => (
                         <li key={property._id}>
-                            {property.purchasePrice}
+                            {property.propertyAddress}: {property.purchasePrice}
                         </li>
                     ))}
                 </ul>
