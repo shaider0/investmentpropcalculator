@@ -1,5 +1,7 @@
 import PropertyForm from "./PropertyForm"
 import React from "react"
+import defaultImage from "./images/default.jpg"
+import './Properties.css';
 const axios = require('axios').default;
 
 class Properties extends React.Component {
@@ -42,7 +44,8 @@ class Properties extends React.Component {
                 <PropertyForm getProperties={this.getProperties} />
                 <ul>
                     {allProperties.map(property => (
-                        <li key={property._id}>
+                        <li key={property._id} className="property">
+                            <img src={defaultImage} height="100" width="100" />
                             {property.propertyAddress} ${property.purchasePrice} ${property.downPayment} ${property.interestRate} ${property.loanTerm} ${property.rentalIncome} ${property.expenses}
                         </li>
                     ))}
