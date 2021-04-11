@@ -43,7 +43,7 @@ class Properties extends React.Component {
                 <ul>
                     {allProperties.map(property => (
                         <li key={property._id}>
-                            {property.propertyAddress}: {property.purchasePrice}
+                            {property.propertyAddress}: ${property.purchasePrice}
                         </li>
                     ))}
                 </ul>

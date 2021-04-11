@@ -6,7 +6,12 @@ class PropertyForm extends React.Component {
         super(props)
         this.state = {
             propertyAddress: "",
-            purchasePrice: ""
+            purchasePrice: "",
+            downPayment: "",
+            interestRate: "",
+            loanTerm: "",
+            rentalIncome: "",
+            expenses: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,9 +27,21 @@ class PropertyForm extends React.Component {
             api = "https://investmentpropcalcapi.herokuapp.com"
         }
         event.preventDefault();
+        const { propertyAddress,
+            purchasePrice,
+            downPayment,
+            interestRate,
+            loanTerm,
+            rentalIncome,
+            expenses } = this.state
         axios.post(`${api}/property`, {
-            propertyAddress: this.state.propertyAddress,
-            purchasePrice: this.state.purchasePrice
+            propertyAddress,
+            purchasePrice,
+            downPayment,
+            interestRate,
+            loanTerm,
+            rentalIncome,
+            expenses
         })
             .then(function (response) {
                 console.log(response);
@@ -49,6 +66,36 @@ class PropertyForm extends React.Component {
                     <label>
                         Purchase Price
                         <input type="number" id="purchase-price" name="purchasePrice" value={this.state.purchasePrice} onChange={this.handleChange} placeholder="100000" />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Down Payment
+                        <input type="number" id="down-payment" name="downPayment" value={this.state.downPayment} onChange={this.handleChange} placeholder="20000" />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Interest Rate
+                        <input type="number" id="interest-rate" name="interestRate" value={this.state.interestRate} onChange={this.handleChange} placeholder="4.5" />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Loan Term (Years)
+                        <input type="number" id="loan-term" name="loanTerm" value={this.state.loanTerm} onChange={this.handleChange} placeholder="30" />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Rental Income (Monthly)
+                        <input type="number" id="rental-income" name="rentalIncome" value={this.state.rentalIncome} onChange={this.handleChange} placeholder="1500" />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Expenses (Monthly)
+                        <input type="number" id="expenses" name="expenses" value={this.state.expenses} onChange={this.handleChange} placeholder="500" />
                     </label>
                 </div>
                 <div>
