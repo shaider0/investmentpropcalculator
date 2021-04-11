@@ -44,9 +44,58 @@ class Properties extends React.Component {
                 <PropertyForm getProperties={this.getProperties} />
                 <ul>
                     {allProperties.map(property => (
-                        <li key={property._id} className="property">
-                            <img src={defaultImage} height="100" width="100" />
-                            {property.propertyAddress} ${property.purchasePrice} ${property.downPayment} ${property.interestRate} ${property.loanTerm} ${property.rentalIncome} ${property.expenses}
+                        <li key={property._id} className="property container">
+                            <div className="row user-content">
+                                <div className="col-sm-4">
+                                    <img src={defaultImage} height="150" width="150" />
+                                </div>
+                                <div className="col-sm-4">
+                                    <h2>Data Provided:</h2>
+                                    <h3>
+                                        {property.propertyAddress}
+                                    </h3>
+                                    <div>
+                                        <b>Purchase Price: </b>${property.purchasePrice}
+                                    </div>
+                                    <div>
+                                        <b>Down Payment: </b>${property.downPayment}
+                                    </div>
+                                    <div>
+                                        <b>Interest Rate: </b> {property.interestRate}%
+                                    </div>
+                                </div>
+                                <div className="col-sm-4">
+                                    <div>
+                                        <b>Loan Term: </b>${property.loanTerm} Years
+                                    </div>
+                                    <div>
+                                        <b>Monthly Rental Income: </b>${property.rentalIncome}
+                                    </div>
+                                    <div>
+                                        <b>Monthly Expenses: </b>${property.expenses}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row calculated-content">
+                                <div className="col-sm-12">
+                                    <h2>Analysis:</h2>
+                                    <div>
+                                        <b>Loan Amount </b>${property.purchasePrice - property.downPayment}
+                                    </div>
+                                    <div>
+                                        <b>Monthly Mortgage Payment: </b>TO BE CALCULATED
+                                    </div>
+                                    <div>
+                                        <b>Total Monthly Expenses: </b>${property.expenses}
+                                    </div>
+                                    <div>
+                                        <b>Total Monthly Cash Flow </b>${property.expenses}
+                                    </div>
+                                    <div>
+                                        <b>Cash on Cash Return </b>${property.expenses}
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     ))}
                 </ul>
