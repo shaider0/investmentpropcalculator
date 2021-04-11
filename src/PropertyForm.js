@@ -5,14 +5,15 @@ class PropertyForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            purchasePrice: 0
+            propertyAddress: "",
+            purchasePrice: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
-        this.setState({ purchasePrice: event.target.value })
+        this.setState({ [event.target.name]: event.target.value })
     }
 
     handleSubmit(event) {
@@ -20,16 +21,16 @@ class PropertyForm extends React.Component {
         if (window.location.hostname !== 'localhost') {
             api = "https://investmentpropcalcapi.herokuapp.com"
         }
-        console.log('A name was submitted: ' + this.state.purchasePrice);
         event.preventDefault();
         axios.post(`${api}/property`, {
+            propertyAddress: this.state.propertyAddress,
             purchasePrice: this.state.purchasePrice
         })
             .then(function (response) {
                 console.log(response);
             })
             .then(this.props.getProperties)
-            .then(this.setState({ purchasePrice: 0 }))
+            .then(this.setState({ propertyAddress: "", purchasePrice: "" }))
             .catch(function (error) {
                 console.log(error);
             });
@@ -38,16 +39,16 @@ class PropertyForm extends React.Component {
     render() {
         return (
             <form id="property-form" onSubmit={this.handleSubmit}>
-                {/* <div>
+                <div>
                     <label>
                         Property Address
-                        <input type="text" id="property-address" value={this.state.propertyAddress} onChange={this.handleChange} />
+                        <input type="text" id="property-address" name="propertyAddress" value={this.state.propertyAddress} onChange={this.handleChange} placeholder="123 Main st" />
                     </label>
-                </div> */}
+                </div>
                 <div>
                     <label>
                         Purchase Price
-                        <input type="number" id="purchase-price" value={this.state.purchasePrice} onChange={this.handleChange} />
+                        <input type="number" id="purchase-price" name="purchasePrice" value={this.state.purchasePrice} onChange={this.handleChange} placeholder="100000" />
                     </label>
                 </div>
                 <div>
