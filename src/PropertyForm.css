@@ -8,3 +8,15 @@
   display: flex;
   align-items: center;
 }
+
+#property-form div div div {
+  display: flex;
+  justify-content: flex-end;
+
+}
+.btn-primary {
+  border-radius: 0.5em;
+  background-color: rgb(33, 97, 200);
+  padding: 10px;
+
+}

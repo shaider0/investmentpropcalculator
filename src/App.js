@@ -5,7 +5,7 @@ import Properties from "./Properties"
 function App() {
   return (
     <div className="App">
-      <h1>INVESTMENT PROPERTY RETURN CALCULATOR</h1>
+      <h1>INVESTMENT PROPERTY RETURN ANALYSIS</h1>
       <Properties />
     </div>
   );

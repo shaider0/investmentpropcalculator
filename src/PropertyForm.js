@@ -93,7 +93,7 @@ class PropertyForm extends React.Component {
                         </div>
                         <div>
                             <label>
-                                Rental Income (Monthly)
+                                Rent (Monthly)
                         <input required type="number" id="rental-income" name="rentalIncome" value={this.state.rentalIncome} onChange={this.handleChange} placeholder="1500" />
                             </label>
                         </div>
@@ -109,7 +109,7 @@ class PropertyForm extends React.Component {
 
 
                 <div>
-                    <input className="btn-primary" type="submit" value="Submit" />
+                    <input className="btn-primary" type="submit" value="Analyze Property" />
                 </div>
             </form>
         )
