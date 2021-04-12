@@ -85,16 +85,16 @@ class Properties extends React.Component {
                                                 <b>Loan Amount </b>${property.purchasePrice - property.downPayment}
                                             </div>
                                             <div>
-                                                <b>Monthly Mortgage Payment: </b>TO BE CALCULATED
+                                                <b>Monthly Mortgage Payment: </b>${property.mortgagePayment}
                                             </div>
                                             <div>
-                                                <b>Total Monthly Expenses: </b>${property.expenses}
+                                                <b>Total Monthly Expenses (incl Mortgage): </b>${property.expenses + property.mortgagePayment}
                                             </div>
                                             <div>
-                                                <b>Total Monthly Cash Flow </b>${property.expenses}
+                                                <b>Total Monthly Cash Flow </b>${property.cashFlow}
                                             </div>
                                             <div>
-                                                <b>Cash on Cash Return </b>${property.expenses}
+                                                <b>Cash on Cash Return </b>{property.cocReturn}%
                                             </div>
                                         </div>
                                     </div>

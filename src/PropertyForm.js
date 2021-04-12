@@ -48,7 +48,7 @@ class PropertyForm extends React.Component {
                 console.log(response);
             })
             .then(this.props.getProperties)
-            .then(this.setState({ propertyAddress: "", purchasePrice: "" }))
+            .then(this.setState({ propertyAddress: "", purchasePrice: "", downPayment: "", interestRate: "", loanTerm: "", rentalIncome: "", expenses: "" }))
             .catch(function (error) {
                 console.log(error);
             });
