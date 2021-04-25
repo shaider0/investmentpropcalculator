@@ -20,12 +20,16 @@
   padding: 10px;
 }
 
-@media(max-width: 500px){
-  input[type="text"] {
-    width: 8em;
+@media(max-width: 770px){
+  #property-form div div div{
+    display: block;
   }
-  
-  input[type="number"] {
-    width: 8em;
+  #property-form div div div input {
+    display: block;
+    width: 100%;
+  }
+  #property-form div div div label {
+    display: block;
+    width: 100%;
   }
 }

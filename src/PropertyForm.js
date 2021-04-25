@@ -58,7 +58,7 @@ class PropertyForm extends React.Component {
         return (
             <form id="property-form" className="container" onSubmit={this.handleSubmit}>
                 <div className="row form-container">
-                    <div className="col-lg-6">
+                    <div className="col-md-6">
                         <div>
                             <label>
                                 Property Address
@@ -78,7 +78,7 @@ class PropertyForm extends React.Component {
                             </label>
                         </div>
                     </div>
-                    <div className="col-lg-6">
+                    <div className="col-md-6">
                         <div>
                             <label>
                                 Interest Rate
