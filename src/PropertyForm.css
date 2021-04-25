@@ -18,5 +18,14 @@
   border-radius: 0.5em;
   background-color: rgb(33, 97, 200);
   padding: 10px;
+}
 
+@media(max-width: 500px){
+  input[type="text"] {
+    width: 8em;
+  }
+  
+  input[type="number"] {
+    width: 8em;
+  }
 }
